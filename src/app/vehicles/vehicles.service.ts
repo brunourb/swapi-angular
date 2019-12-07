@@ -3,13 +3,14 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 import { Vehicles } from './vehicles';
-import { Igeneric } from '../generic/igeneric';
+import { IGenericOperations } from '../generic/igeneric-operations';
 import { Observable } from 'rxjs';
+import { IGenericResource } from '../generic/igeneric-resource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VehiclesService implements Igeneric<Vehicles, number> {
+export class VehiclesService implements IGenericOperations<Vehicles, number> {
 
   endpoint = environment.URL_API+"vehicles";
 
@@ -29,9 +30,9 @@ export class VehiclesService implements Igeneric<Vehicles, number> {
     console.log("Entrou dentro do serviço VehiclesService - método PUT");
     this.http.put(this.endpoint+"/"+id, data);
   }
-  get(): Observable<Vehicles[]> {
+  get(): Observable<IGenericResource<Vehicles>> {
     console.log("Entrou dentro do serviço VehiclesService - método GET");
-    return this.http.get<Vehicles[]>(this.endpoint);
+    return this.http.get<IGenericResource<Vehicles>>(this.endpoint);
   }
   getById(id?: number): Observable<Vehicles> {
     console.log("Entrou dentro do serviço VehiclesService - método GET/:ID");

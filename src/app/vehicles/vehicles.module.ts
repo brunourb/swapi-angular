@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GenericModule } from '../generic/generic.module';
+import { VehiclesListComponent } from './vehicles-list/vehicles-list.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [VehiclesListComponent],
   imports: [
     CommonModule, GenericModule, HttpClientModule
   ]

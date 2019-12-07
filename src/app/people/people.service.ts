@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-import { Igeneric } from '../generic/igeneric';
+import { IGenericOperations } from '../generic/igeneric-operations';
 import { People } from './people';
 import { Observable } from 'rxjs';
+import { IGenericResource } from '../generic/igeneric-resource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PeopleService implements Igeneric<People, number> {
+export class PeopleService implements IGenericOperations<People, number> {
 
   endpoint = environment.URL_API+"people";
 
@@ -29,9 +30,9 @@ export class PeopleService implements Igeneric<People, number> {
     console.log("Entrou dentro do serviço PeopleService - método PATCH");
     this.http.patch(this.endpoint+"/"+id, data);
   }
-  get(): Observable<People[]> {
+  get(): Observable<IGenericResource<People>> {
     console.log("Entrou dentro do serviço PeopleService - método GET");
-    return this.http.get<People[]>(this.endpoint);
+    return this.http.get<IGenericResource<People>>(this.endpoint);
   }
   getById(id?: number): Observable<People> {
     console.log("Entrou dentro do serviço PeopleService - método GET/:ID");

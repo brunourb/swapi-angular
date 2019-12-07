@@ -3,13 +3,14 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 import { Starships } from './starships';
-import { Igeneric } from '../generic/igeneric';
+import { IGenericOperations } from '../generic/igeneric-operations';
 import { Observable } from 'rxjs';
+import { IGenericResource } from '../generic/igeneric-resource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StarshipsService implements Igeneric<Starships, number> {
+export class StarshipsService implements IGenericOperations<Starships, number> {
 
   endpoint = environment.URL_API+"starships";
 
@@ -29,9 +30,9 @@ export class StarshipsService implements Igeneric<Starships, number> {
     console.log("Entrou dentro do serviço StarshipsService - método PUT");
     this.http.put(this.endpoint+"/"+id, data);
   }
-  get(): Observable<Starships[]> {
+  get(): Observable<IGenericResource<Starships>> {
     console.log("Entrou dentro do serviço StarshipsService - método GET");
-    return this.http.get<Starships[]>(this.endpoint);
+    return this.http.get<IGenericResource<Starships>>(this.endpoint);
   }
   getById(id?: number): Observable<Starships> {
     console.log("Entrou dentro do serviço StarshipsService - método GET/:ID");

@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GenericModule } from '../generic/generic.module';
+import { FilmsListComponent } from './films-list/films-list.component';
+import {NgbModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  declarations: [],
+  declarations: [FilmsListComponent],
   imports: [
-    CommonModule, GenericModule, HttpClientModule
-  ]
+    CommonModule, GenericModule, HttpClientModule, BrowserModule, NgbModule
+  ],
+  exports: [FilmsListComponent]
+  //bootstrap: [FilmsListComponent]
 })
 export class FilmsModule { }
